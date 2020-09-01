@@ -1,13 +1,14 @@
 <template>
     <div>
         <div v-bind:key="todo.id" v-for="todo in todos">
-            <TodoItem v-bind:todo="todo" v-on:delete-todo="$emit('delete-todo', todo.id)"/>
+            <TodoItem v-bind:todo="todo"/>
         </div>
     </div>
 </template>
 
 <script>
 
+import { mapState } from 'vuex';
 import TodoItem from './TodoItem';
 
 export default {
@@ -15,7 +16,9 @@ export default {
     components: {
         TodoItem
     },
-    props: ["todos"]
+    computed: mapState([
+        'todos'
+    ])
 }
 </script>
 

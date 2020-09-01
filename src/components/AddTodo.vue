@@ -8,6 +8,9 @@
 </template>
 
 <script>
+
+import { mapActions } from 'vuex';
+
 export default {
     name: 'AddTodo',
     data() {
@@ -16,14 +19,16 @@ export default {
         }
     },
     methods: {
+        ...mapActions([
+            'createTodo'
+        ]),
         addTodo(e) {
             e.preventDefault();
             const newTodo = {
-                id: 5,
                 title: this.title,
                 completed: false
             };
-            this.$emit('add-todo', newTodo);
+            this.createTodo(newTodo);
             this.title = ''
         }
     }

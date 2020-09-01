@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <Header/>
-    <AddTodo v-on:add-todo="addTodo"/>
-    <Todos v-bind:todos="todos" v-on:delete-todo="deleteTodo"/>
+    <AddTodo/>
+    <Todos/>
   </div>
 </template>
 
@@ -10,6 +10,7 @@
 import Header from './components/layout/header'
 import Todos from './components/Todos';
 import AddTodo from './components/AddTodo';
+import { mapActions } from 'vuex'
 
 export default {
   name: 'App',
@@ -18,34 +19,11 @@ export default {
     Todos,
     AddTodo
   },
-  data() {
-    return {
-      todos: [
-        {
-          id: 1,
-          title: 'Watch',
-          completed: false
-        },
-        {
-          id: 2,
-          title: 'Learn',
-          completed: false
-        },
-        {
-          id: 3,
-          title: 'Code',
-          completed: true
-        }
-      ]
-    }
-  },
   methods: {
-    deleteTodo (id) {
-      this.todos = this.todos.filter(todo => todo.id !== id);
-    },
-    addTodo (todo) {
-      this.todos = [...this.todos, todo];
-    }
+    ...mapActions(['initiateTodos']),
+  },
+  created() {
+    this.initiateTodos();
   }
 }
 </script>
