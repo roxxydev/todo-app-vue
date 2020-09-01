@@ -5,11 +5,13 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "axios": "0.20.x",
     "core-js": "3.6.x",
+    "gh-pages": "^3.1.0",
     "vue": "2.6.x",
     "vuex": "^3.5.1"
   },
